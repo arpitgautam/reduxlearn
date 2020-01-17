@@ -1,5 +1,13 @@
-const display = (name, ...args)=>{
-    console.log(args[1]);
+let user = {
+    firstName: "Foo",
+    age: 33,
+    friends: ["Bar", "Bam","Baz"],
+    address:{
+        street: "201 Main Road",
+        city: "Noida"
+    }
 }
 
-display("Foo",32,true);
+const {firstName:fn, age,friends:[f1,f2,f3],address:{street:st,city:ct}} = user;
+
+console.log(fn,age,f1,f2,f3,st,ct);
