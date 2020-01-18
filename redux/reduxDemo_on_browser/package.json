@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "browserify":"browserify ./build/index.js -o ./bundle.js",
-    "babelify":"babel ./script -d build"
+    "babelify":"babel ./script -d build",
+    "build": "npm run babelify && npm run browserify"
   },
   "keywords": [],
   "author": "",
