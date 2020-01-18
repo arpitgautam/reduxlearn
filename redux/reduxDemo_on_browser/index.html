@@ -14,15 +14,28 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="header" class="text primary">
-            Counter: <span id="counter"></span>
-        </h1>
-        <div id = "container">
-            <button class="btn btn-outline-primary" id="increment">Increment</button>
-            <button class="btn btn-outline-primary" id="decrement">Decrement</button>
-            
-            
+        <div class="row">
+          <div class="col-sm" id="list_container">
+            <ul class="list-group" id="list"></ul>
+          </div>
+          <div class="col-sm" id="edit_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm"> 
+                        <input class="btn btn-primary" type="button" id="addButton" value="Add">
+                        <input class="btn btn-primary" type="button" id="deleteBtn" value="Delete">
+                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        Title:<input type="text" class="form-control" id="title" aria-describedby="basic-addon3">
+                        Content:<input type="text" class="form-control" id="content" aria-describedby="basic-addon3">
+                       
+                    </div>
+                </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 </body>
 </html>

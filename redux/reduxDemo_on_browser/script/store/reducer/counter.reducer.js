@@ -1,23 +1,29 @@
-import * as actionTypes from "../actions/counter.action"
+import * as actionTypes from "../actions/list.actions"
 
 const initialState = {
-    "counter":0
+    entries:[]
+   
 };
 
-export const counterReducer = (state = initialState, action)=>{
+export const listReducer = (state = initialState, action)=>{
+    console.log("inside reducer");
     console.log(action);
+    console.log(state);
     switch(action.type)
     {
-        case actionTypes.INCREMENT:{
+        case actionTypes.ADD:{
+            console.log(action);
             return{
                 ...state,
-                counter: state.counter + 1
+                entries: [...state.entries,action.payload]
             }
         }
-        case actionTypes.DECREMENT:{
+        case actionTypes.DELETE:{
+            const newpayload = [...state.entries];
+            newpayload.pop();
             return{
                 ...state,
-                counter: state.counter -1
+                entries:newpayload
             }
         }
         default: return state;

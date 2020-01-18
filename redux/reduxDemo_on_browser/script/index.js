@@ -5,30 +5,39 @@
 //es6 imports
 import {MAGIC_NUMBER} from "./utils";
 import {createStore} from "redux";
-import {counterReducer} from "./store/reducer/counter.reducer";
-import * as actionTypes from "./store/actions/counter.action";
+import {listReducer} from "./store/reducer/counter.reducer";
+import * as actionTypes from "./store/actions/list.actions";
 
 function updateUI(state){
-    $("#counter").text(state.counter);
+    console.log("updating list");
+    console.log(state);
+    $('ul').empty();
+    let str ="";
+    for(const entry of state.entries){
+        str = str + '\<li class=\list-group-item\>' +entry.title + ':' + entry.body + '</li>';
+    }
+    $("#list").append(str);
+    
+    //console.log(str);
 }
 
 $(document).ready(()=>{
-    const store = createStore(counterReducer);
+    const store = createStore(listReducer);
     console.log(store.getState());
-    updateUI(store.getState());
+    //updateUI(store.getState());
     store.subscribe(()=>{
         console.log("inside subscribe");
         console.log(store.getState());
         updateUI(store.getState());
     });
 
-    $("#increment").click(()=>{
-        console.log("inc clicked");
-       store.dispatch({type:actionTypes.INCREMENT});
+    $("#addButton").click(()=>{
+        console.log("add clicked");
+       store.dispatch(actionTypes.onAdd($("#title").val(),$("#content").val()));
     });
 
-    $("#decrement").click(()=>{
-        console.log("dec clicked");
-       store.dispatch({type:actionTypes.DECREMENT});
+    $("#deleteBtn").click(()=>{
+        console.log("delete clicked");
+        store.dispatch(actionTypes.onDelete());
     });
 });
